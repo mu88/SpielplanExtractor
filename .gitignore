@@ -10,12 +10,14 @@
 .vs
 bin
 obj
+*.user
 
 # dependencies
 /node_modules
+packages
 
 # IDEs and editors
-/.idea
+.idea
 .project
 .classpath
 .c9/
