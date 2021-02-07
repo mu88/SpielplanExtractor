@@ -77,12 +77,13 @@ namespace SpielplanExtractor
         private static DateTime BuildGameTime(HtmlNode row)
         {
             var rawGameDate = row.ChildNodes[1].InnerText;
-            var rawGameTime = row.ChildNodes.ElementAtOrDefault(7)
+            var rawGameTimeValue = row.ChildNodes.ElementAtOrDefault(7)
                                  ?.ChildNodes.ElementAtOrDefault(3)
                                  ?.ChildNodes.ElementAtOrDefault(3)
                                  ?.ChildNodes.ElementAtOrDefault(1)
                                  ?.ChildNodes.ElementAtOrDefault(3)
-                                 ?.InnerText.Trim() ?? "14:00";
+                                 ?.InnerText.Trim();
+            var rawGameTime = string.IsNullOrEmpty(rawGameTimeValue) || rawGameTimeValue.Equals(":") ? "14:00" : rawGameTimeValue;
 
             DateTime.TryParse(rawGameDate, out var gameDate);
             DateTime.TryParse(rawGameTime, out var gameTime);

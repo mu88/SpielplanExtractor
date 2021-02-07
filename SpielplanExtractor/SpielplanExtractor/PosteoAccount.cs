@@ -44,7 +44,7 @@ namespace SpielplanExtractor
                 var isInThePast = game.Date < DateTime.Now.Date;
                 if (isInThePast)
                 {
-                    // continue;
+                    continue;
                 }
 
                 var existingEvent =
